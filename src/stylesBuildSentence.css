@@ -146,6 +146,19 @@ p {
     padding: 0 5%;
 }
 
+.sco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    backdrop-filter: blur(10px);
+
+    margin: 5px 0;
+
+}
+
 .score {
     display: flex;
     justify-content: center;
