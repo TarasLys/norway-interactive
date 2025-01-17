@@ -638,11 +638,10 @@ const sentences = [
 
 ];
 
+
+
 const extraWords = [
-  "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så",
-  "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over",
-  "under", "eller", "eller", "nå", "her", "der", "hvor", "når", "da", "skal", "kan", "vil", "må", "gå", "spise", "drikke",
-  "se", "høre", "være", "gjøre", "ta", "ha", "få", "sove", "stå", "sitte", "ligge", "leke", "arbeide", "spille", "kjenne"
+  "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så", "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over", "under", "eller", "nå", "her", "der", "hvor", "når", "da", "skal", "kan", "vil", "må", "gå", "spise", "drikke", "se", "høre", "være", "gjøre", "ta", "ha", "få", "sove", "stå", "sitte", "ligge", "leke", "arbeide", "spille", "kjenne"
 ];
 
 let currentSentence = {};
@@ -657,7 +656,6 @@ function getRandomSentence() {
   const totalWeight = weights.reduce((acc, weight) => acc + weight, 0);
   const random = Math.random() * totalWeight;
   let cumulativeWeight = 0;
-
   for (let i = 0; i < sentences.length; i++) {
     cumulativeWeight += weights[i];
     if (random < cumulativeWeight) {
@@ -729,8 +727,16 @@ function normalizeSentence(sentence) {
 
 function formatSentence(sentence) {
   const numberMap = {
-    "0": "null", "1": "en", "2": "to", "3": "tre", "4": "fire",
-    "5": "fem", "6": "seks", "7": "sju", "8": "åtte", "9": "ni"
+    "0": "null",
+    "1": "en",
+    "2": "to",
+    "3": "tre",
+    "4": "fire",
+    "5": "fem",
+    "6": "seks",
+    "7": "sju",
+    "8": "åtte",
+    "9": "ni"
   };
 
   // Преобразуем первую букву в заглавную
@@ -747,9 +753,18 @@ function formatSentence(sentence) {
   // Преобразуем время в текстовый формат
   sentence = sentence.replace(/(\d{2})\.00/g, (match, p1) => {
     const timeMap = {
-      "01": "ett", "02": "to", "03": "tre", "04": "fire",
-      "05": "fem", "06": "seks", "07": "sju", "08": "åtte",
-      "09": "ni", "10": "ti", "11": "elleve", "12": "tolv"
+      "01": "ett",
+      "02": "to",
+      "03": "tre",
+      "04": "fire",
+      "05": "fem",
+      "06": "seks",
+      "07": "sju",
+      "08": "åtte",
+      "09": "ni",
+      "10": "ti",
+      "11": "elleve",
+      "12": "tolv"
     };
     return `klokka ${timeMap[p1]}`;
   });
@@ -799,6 +814,7 @@ function startVoiceInput() {
     recognition.onresult = function(event) {
       const transcript = event.results[0][0].transcript;
       let words = transcript.split(/\s+/);
+
       words = words.map(word => {
         // Убираем двойные точки
         if (word.endsWith("..")) {
@@ -810,23 +826,40 @@ function startVoiceInput() {
 
       // Преобразуем цифры в текстовый формат
       const numberMap = {
-        "0": "null", "1": "en", "2": "to", "3": "tre", "4": "fire",
-        "5": "fem", "6": "seks", "7": "sju", "8": "åtte", "9": "ni"
+        "0": "null",
+        "1": "en",
+        "2": "to",
+        "3": "tre",
+        "4": "fire",
+        "5": "fem",
+        "6": "seks",
+        "7": "sju",
+        "8": "åtte",
+        "9": "ni"
       };
       words = words.map(word => word.replace(/\b\d\b/g, match => numberMap[match]));
-      
+
       // Преобразуем время в текстовый формат
       words = words.map(word => {
         return word.replace(/(\d{2})\.00/g, (match, p1) => {
           const timeMap = {
-            "01": "ett", "02": "to", "03": "tre", "04": "fire",
-            "05": "fem", "06": "seks", "07": "sju", "08": "åtte",
-            "09": "ni", "10": "ti", "11": "elleve", "12": "tolv"
+            "01": "ett",
+            "02": "to",
+            "03": "tre",
+            "04": "fire",
+            "05": "fem",
+            "06": "seks",
+            "07": "sju",
+            "08": "åtte",
+            "09": "ni",
+            "10": "ti",
+            "11": "elleve",
+            "12": "tolv"
           };
           return `klokka ${timeMap[p1]}`;
         });
       });
-      
+
       selectedWords = words;
       const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
       const formattedSentence = formatSentence(selectedSentence);
@@ -840,7 +873,6 @@ function startVoiceInput() {
       console.error("Ошибка распознавания речи: ", event.error);
     };
   }
-
   recognition.start();
 }
 
@@ -860,6 +892,8 @@ window.onload = function() {
   micButton.ontouchstart = startVoiceInput;
   micButton.ontouchend = stopVoiceInput;
 };
+
+
 
 
 
