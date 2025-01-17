@@ -638,8 +638,6 @@ const sentences = [
 
 ];
 
-
-
 const extraWords = [
   "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så",
   "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over",
@@ -730,6 +728,11 @@ function normalizeSentence(sentence) {
 }
 
 function formatSentence(sentence) {
+  const numberMap = {
+    "0": "null", "1": "en", "2": "to", "3": "tre", "4": "fire",
+    "5": "fem", "6": "seks", "7": "sju", "8": "åtte", "9": "ni"
+  };
+
   // Преобразуем первую букву в заглавную
   sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
 
@@ -737,6 +740,9 @@ function formatSentence(sentence) {
   if (!/[.!?]$/.test(sentence)) {
     sentence += '.';
   }
+
+  // Преобразуем цифры в текстовый формат
+  sentence = sentence.replace(/\b\d\b/g, match => numberMap[match]);
 
   // Преобразуем время в текстовый формат
   sentence = sentence.replace(/klokka (\d{2})\.00/g, (match, p1) => {
@@ -801,6 +807,12 @@ function startVoiceInput() {
         // Добавляем запятые автоматически
         return word.replace(/(,)/g, "$1 ");
       });
+      // Преобразуем цифры в текстовый формат
+      const numberMap = {
+        "0": "null", "1": "en", "2": "to", "3": "tre", "4": "fire",
+        "5": "fem", "6": "seks", "7": "sju", "8": "åtte", "9": "ni"
+      };
+      words = words.map(word => word.replace(/\b\d\b/g, match => numberMap[match]));
       // Преобразуем время в текстовый формат
       words = words.map(word => {
         return word.replace(/(\d{2})\.00/g, (match, p1) => {
