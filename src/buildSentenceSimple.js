@@ -825,18 +825,8 @@ function startVoiceInput() {
       });
 
       // Преобразуем цифры в текстовый формат
-      const numberMap = {
-        "0": "null",
-        "1": "en",
-        "2": "to",
-        "3": "tre",
-        "4": "fire",
-        "5": "fem",
-        "6": "seks",
-        "7": "sju",
-        "8": "åtte",
-        "9": "ni"
-      };
+     
+      const numberMap = { "0": "null", "1": "en", "2": "to", "3": "tre", "4": "fire", "5": "fem", "6": "seks", "7": "sju", "8": "åtte", "9": "ni", "10": "ti", "11": "elleve", "12": "tolv", "13": "tretten", "14": "fjorten", "15": "femten", "16": "seksten", "17": "sytten", "18": "atten", "19": "nitten", "20": "tjue", "21": "tjueen", "22": "tjueto", "23": "tjuetre", "24": "tjuefire", "25": "tjuefem", "26": "tjueseks", "27": "tjuesju", "28": "tjueåtte", "29": "tjueni", "30": "tretti", "31": "trettien", "32": "trettito", "33": "trettitre", "34": "trettifire", "35": "trettifem", "36": "trettiseks", "37": "trettisju", "38": "trettiåtte", "39": "trettini", "40": "førti", "41": "førtien", "42": "førtito", "43": "førtitre", "44": "førtifire", "45": "førtifem", "46": "førtiseks", "47": "førtisju", "48": "førtiåtte", "49": "førtini", "50": "femti", "51": "femtien", "52": "femtito", "53": "femtitre", "54": "femtifire", "55": "femtifem", "56": "femtiseks", "57": "femtisju", "58": "femtiåtte", "59": "femtini", "60": "seksti" };
       words = words.map(word => word.replace(/\b\d\b/g, match => numberMap[match]));
 
       // Преобразуем время в текстовый формат
