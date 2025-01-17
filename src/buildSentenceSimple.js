@@ -745,7 +745,7 @@ function formatSentence(sentence) {
   sentence = sentence.replace(/\b\d\b/g, match => numberMap[match]);
 
   // Преобразуем время в текстовый формат
-  sentence = sentence.replace(/klokka (\d{2})\.00/g, (match, p1) => {
+  sentence = sentence.replace(/(\d{2})\.00/g, (match, p1) => {
     const timeMap = {
       "01": "ett", "02": "to", "03": "tre", "04": "fire",
       "05": "fem", "06": "seks", "07": "sju", "08": "åtte",
@@ -807,12 +807,14 @@ function startVoiceInput() {
         // Добавляем запятые автоматически
         return word.replace(/(,)/g, "$1 ");
       });
+
       // Преобразуем цифры в текстовый формат
       const numberMap = {
         "0": "null", "1": "en", "2": "to", "3": "tre", "4": "fire",
         "5": "fem", "6": "seks", "7": "sju", "8": "åtte", "9": "ni"
       };
       words = words.map(word => word.replace(/\b\d\b/g, match => numberMap[match]));
+      
       // Преобразуем время в текстовый формат
       words = words.map(word => {
         return word.replace(/(\d{2})\.00/g, (match, p1) => {
@@ -824,6 +826,7 @@ function startVoiceInput() {
           return `klokka ${timeMap[p1]}`;
         });
       });
+      
       selectedWords = words;
       const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
       const formattedSentence = formatSentence(selectedSentence);
@@ -857,6 +860,7 @@ window.onload = function() {
   micButton.ontouchstart = startVoiceInput;
   micButton.ontouchend = stopVoiceInput;
 };
+
 
 
 
