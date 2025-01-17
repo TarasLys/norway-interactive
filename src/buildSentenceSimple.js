@@ -626,7 +626,8 @@ const sentences = [
   "english": "They live in an apartment in the city center.",
   "arabic": "يعيشون في شقة في وسط المدينة.",
   "swahili": "Wanaishi katika ghorofa katikati ya mji."
-},
+  },
+// const sentences = [
 {
   "norwegian": "Hun lager en salat til lunsj.",
   "russian": "Она готовит салат на обед.",
@@ -640,11 +641,12 @@ const sentences = [
 
 
 
-const extraWords = [ "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så", 
-  "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over", 
-  "under", "eller", "eller", "nå", "her", "der", "hvor", "når", "da", "skal", "kan", "vil", "må", "gå", "spise", "drikke", 
-  "se", "høre", "være", "gjøre", "ta", "ha", "få", "sove", "stå", "sitte", "ligge", "leke", "arbeide", "spille", "kjenne"];
-
+const extraWords = [
+  "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så",
+  "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over",
+  "under", "eller", "eller", "nå", "her", "der", "hvor", "når", "da", "skal", "kan", "vil", "må", "gå", "spise", "drikke",
+  "se", "høre", "være", "gjøre", "ta", "ha", "få", "sove", "stå", "sitte", "ligge", "leke", "arbeide", "spille", "kjenne"
+];
 
 let currentSentence = {};
 let selectedWords = [];
@@ -653,10 +655,8 @@ let incorrectCount = 0;
 let recognition;
 let selectedLanguage = localStorage.getItem('selectedLanguage') || 'norwegian';
 
-
-
 function getRandomSentence() {
-  const weights = sentences.map((_, index) => (index === sentences.length - 1 ? 5 : 1)); // Увеличиваем вес последнего предложения
+  const weights = sentences.map((_, index) => (index === sentences.length - 1 ? 5 : 1));
   const totalWeight = weights.reduce((acc, weight) => acc + weight, 0);
   const random = Math.random() * totalWeight;
   let cumulativeWeight = 0;
@@ -667,6 +667,7 @@ function getRandomSentence() {
       return sentences[i];
     }
   }
+  return sentences[sentences.length - 1];
 }
 
 function shuffleArray(array) {
@@ -738,6 +739,16 @@ function formatSentence(sentence) {
     sentence += '.';
   }
 
+  // Преобразуем время в текстовый формат
+  sentence = sentence.replace(/klokka (\d{2})\.00/g, (match, p1) => {
+    const timeMap = {
+      "01": "ett", "02": "to", "03": "tre", "04": "fire",
+      "05": "fem", "06": "seks", "07": "sju", "08": "åtte",
+      "09": "ni", "10": "ti", "11": "elleve", "12": "tolv"
+    };
+    return `klokka ${timeMap[p1]}`;
+  });
+
   return sentence;
 }
 
@@ -782,7 +793,26 @@ function startVoiceInput() {
 
     recognition.onresult = function(event) {
       const transcript = event.results[0][0].transcript;
-      const words = transcript.split(/\s+/);
+      let words = transcript.split(/\s+/);
+      words = words.map(word => {
+        // Убираем двойные точки
+        if (word.endsWith("..")) {
+          word = word.slice(0, -1);
+        }
+        // Добавляем запятые автоматически
+        return word.replace(/(,)/g, "$1 ");
+      });
+      // Преобразуем время в текстовый формат
+      words = words.map(word => {
+        return word.replace(/(\d{2})\.00/g, (match, p1) => {
+          const timeMap = {
+            "01": "ett", "02": "to", "03": "tre", "04": "fire",
+            "05": "fem", "06": "seks", "07": "sju", "08": "åtte",
+            "09": "ni", "10": "ti", "11": "elleve", "12": "tolv"
+          };
+          return `klokka ${timeMap[p1]}`;
+        });
+      });
       selectedWords = words;
       const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
       const formattedSentence = formatSentence(selectedSentence);
@@ -818,8 +848,35 @@ window.onload = function() {
 };
 
 
+
+
+// const extraWords = [ "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så", 
+//   "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over", 
+//   "under", "eller", "eller", "nå", "her", "der", "hvor", "når", "da", "skal", "kan", "vil", "må", "gå", "spise", "drikke", 
+//   "se", "høre", "være", "gjøre", "ta", "ha", "få", "sove", "stå", "sitte", "ligge", "leke", "arbeide", "spille", "kjenne"];
+
+
+// let currentSentence = {};
+// let selectedWords = [];
+// let correctCount = 0;
+// let incorrectCount = 0;
+// let recognition;
+// let selectedLanguage = localStorage.getItem('selectedLanguage') || 'norwegian';
+
+
+
 // function getRandomSentence() {
-//   return sentences[Math.floor(Math.random() * sentences.length)];
+//   const weights = sentences.map((_, index) => (index === sentences.length - 1 ? 5 : 1)); // Увеличиваем вес последнего предложения
+//   const totalWeight = weights.reduce((acc, weight) => acc + weight, 0);
+//   const random = Math.random() * totalWeight;
+//   let cumulativeWeight = 0;
+
+//   for (let i = 0; i < sentences.length; i++) {
+//     cumulativeWeight += weights[i];
+//     if (random < cumulativeWeight) {
+//       return sentences[i];
+//     }
+//   }
 // }
 
 // function shuffleArray(array) {
@@ -883,10 +940,10 @@ window.onload = function() {
 // }
 
 // function formatSentence(sentence) {
-  
+//   // Преобразуем первую букву в заглавную
 //   sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
 
-  
+//   // Добавляем точку в конце предложения, если её нет
 //   if (!/[.!?]$/.test(sentence)) {
 //     sentence += '.';
 //   }
@@ -917,19 +974,19 @@ window.onload = function() {
 //   }
 //   selectedWords = [];
 //   displaySentence();
-//   speak(formattedCorrectSentence); 
+//   speak(formattedCorrectSentence); // Озвучиваем правильное предложение
 // }
 
 // function speak(text) {
 //   const utterance = new SpeechSynthesisUtterance(text);
-//   utterance.lang = "nb-NO"; 
+//   utterance.lang = "nb-NO"; // Устанавливаем язык на норвежский букмол
 //   window.speechSynthesis.speak(utterance);
 // }
 
 // function startVoiceInput() {
 //   if (!recognition) {
 //     recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-//     recognition.lang = "nb-NO"; 
+//     recognition.lang = "nb-NO"; // Устанавливаем язык на норвежский букмол
 //     recognition.interimResults = false;
 //     recognition.maxAlternatives = 1;
 
@@ -969,6 +1026,12 @@ window.onload = function() {
 //   micButton.ontouchstart = startVoiceInput;
 //   micButton.ontouchend = stopVoiceInput;
 // };
+
+
+
+
+
+
 
 
 
