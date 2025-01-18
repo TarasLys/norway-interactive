@@ -638,8 +638,6 @@ const sentences = [
 
 ];
 
-
-
 const extraWords = [
   "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så", "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over", "under", "eller", "nå", "her", "der", "hvor", "når", "da", "skal", "kan", "vil", "må", "gå", "spise", "drikke", "se", "høre", "være", "gjøre", "ta", "ha", "få", "sove", "stå", "sitte", "ligge", "leke", "arbeide", "spille", "kjenne"
 ];
@@ -844,7 +842,6 @@ window.onload = function() {
   micButton.ontouchstart = startVoiceInput;
   micButton.ontouchend = stopVoiceInput;
 };
-
 
 
 
