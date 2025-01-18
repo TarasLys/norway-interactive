@@ -638,7 +638,6 @@ const sentences = [
 
 ];
 
-
 const extraWords = [
   "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så",
   "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over",
@@ -795,46 +794,6 @@ function speak(text) {
   window.speechSynthesis.speak(utterance);
 }
 
-// function startVoiceInput() {
-//   if (!recognition) {
-//     recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-//     recognition.lang = "nb-NO"; // Устанавливаем язык на норвежский букмол
-//     recognition.interimResults = false;
-//     recognition.maxAlternatives = 1;
-
-//     recognition.onresult = function(event) {
-//       isVoiceInput = true;
-//       const transcript = event.results[0][0].transcript;
-//       let words = transcript.split(/\s+/);
-
-//       words = words.map(word => {
-//         // Убираем двойные точки
-//         if (word.endsWith("..")) {
-//           word = word.slice(0, -1);
-//         }
-//         // Добавляем запятые автоматически
-//         return word.replace(/(,)/g, "$1 ");
-//       });
-
-//       // Преобразуем цифры в текстовый формат
-//       words = words.map(word => word.replace(/\b\d+\b/g, match => numberMap[match]));
-
-//       selectedWords = words;
-//       const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
-//       const formattedSentence = formatSentence(selectedSentence);
-//       document.getElementById("sentence").textContent = formattedSentence;
-//       document.getElementById("feedback").textContent = "";
-//       document.getElementById("correctAnswer").textContent = "";
-//       document.getElementById("userAnswer").textContent = "";
-//     };
-
-//     recognition.onerror = function(event) {
-//       console.error("Ошибка распознавания речи: ", event.error);
-//     };
-//   }
-//   recognition.start();
-// }
-
 function startVoiceInput() {
   if (!recognition) {
     recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -865,7 +824,11 @@ function startVoiceInput() {
       selectedWords = words;
       const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
       const formattedSentence = formatSentence(selectedSentence);
-      document.getElementById("sentence").textContent = formattedSentence;
+      
+      // Удаляем ":undefined" из отформатированной строки
+      const filteredSentence = formattedSentence.replace(/:undefined/g, '');
+
+      document.getElementById("sentence").textContent = filteredSentence;
       document.getElementById("feedback").textContent = "";
       document.getElementById("correctAnswer").textContent = "";
       document.getElementById("userAnswer").textContent = "";
@@ -877,7 +840,6 @@ function startVoiceInput() {
   }
   recognition.start();
 }
-
 
 function stopVoiceInput() {
   if (recognition) {
@@ -901,6 +863,8 @@ window.onload = function() {
     isVoiceInput = false;
   });
 };
+
+
 
 
 
