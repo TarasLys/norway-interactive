@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3d146cf99ebd44a6232fd90c20618311e2f3fb67
 const adjectives = [
 { "positiv": "stor", "komparativ": "større", "superlativ": "størst" },
   { "positiv": "liten", "komparativ": "mindre", "superlativ": "minst" },
