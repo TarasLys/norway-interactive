@@ -729,20 +729,24 @@ function selectWord(word, wordElement) {
 
 function removeLastWord() {
   if (selectedWords.length > 0) {
-    if (isVoiceInput) {
-      selectedWords.pop();
-      const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
-      document.getElementById("sentence").textContent = selectedSentence;
-    } else {
-      const lastWord = selectedWords.pop();
-      const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
-      document.getElementById("sentence").textContent = selectedSentence;
+    const lastWord = selectedWords.pop();
+    const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
+    document.getElementById("sentence").textContent = selectedSentence;
 
+    if (!isVoiceInput) {
       const wordElement = document.createElement("button");
       wordElement.textContent = lastWord;
       wordElement.classList.add("word");
       wordElement.onclick = () => selectWord(lastWord, wordElement);
       document.getElementById("wordsContainer").appendChild(wordElement);
+    }
+  }
+
+  // Проверка на количество слов и удаление лишних при голосовом вводе
+  const wordsContainer = document.getElementById("wordsContainer");
+  if (isVoiceInput && wordsContainer.children.length > 16) {
+    while (wordsContainer.children.length > 16) {
+      wordsContainer.removeChild(wordsContainer.lastChild);
     }
   }
 }
@@ -855,6 +859,7 @@ window.onload = function() {
   micButton.ontouchstart = startVoiceInput;
   micButton.ontouchend = stopVoiceInput;
 };
+
 
 
 
