@@ -638,7 +638,6 @@ const sentences = [
 
 ];
 
-
 const extraWords = [
   "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så",
   "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over",
@@ -858,6 +857,11 @@ window.onload = function() {
   micButton.onmouseup = stopVoiceInput;
   micButton.ontouchstart = startVoiceInput;
   micButton.ontouchend = stopVoiceInput;
+  
+  // Событие для отслеживания ручного ввода
+  document.getElementById("wordsContainer").addEventListener('click', () => {
+    isVoiceInput = false;
+  });
 };
 
 
