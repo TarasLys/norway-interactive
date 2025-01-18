@@ -1,3 +1,4 @@
+
 const adjectives = [
 { "positiv": "stor", "komparativ": "større", "superlativ": "størst" },
   { "positiv": "liten", "komparativ": "mindre", "superlativ": "minst" },
