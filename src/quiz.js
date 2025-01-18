@@ -1,81 +1,551 @@
-// Список глаголов с формами
 const verbs = [
-  { infinitiv: "være", presens: "er", preteritum: "var", perfektum: "vært" },
-  { infinitiv: "ha", presens: "har", preteritum: "hadde", perfektum: "hatt" },
-  { infinitiv: "gjøre", presens: "gjør", preteritum: "gjorde", perfektum: "gjort" },
-  { infinitiv: "si", presens: "sier", preteritum: "sa", perfektum: "sagt" },
-  { infinitiv: "få", presens: "får", preteritum: "fikk", perfektum: "fått" },
-  { infinitiv: "komme", presens: "kommer", preteritum: "kom", perfektum: "kommet" },
-  { infinitiv: "gå", presens: "går", preteritum: "gikk", perfektum: "gått" },
-  { infinitiv: "se", presens: "ser", preteritum: "så", perfektum: "sett" },
-  { infinitiv: "ta", presens: "tar", preteritum: "tok", perfektum: "tatt" },
-  { infinitiv: "like", presens: "liker", preteritum: "likte", perfektum: "likt" },
-  { infinitiv: "kunne", presens: "kan", preteritum: "kunne", perfektum: "kunnet" },
-  { infinitiv: "ville", presens: "vil", preteritum: "ville", perfektum: "villet" },
-  { infinitiv: "måtte", presens: "må", preteritum: "måtte", perfektum: "måttet" },
-  { infinitiv: "skulle", presens: "skal", preteritum: "skulle", perfektum: "skullet" },
-  { infinitiv: "bli", presens: "blir", preteritum: "ble", perfektum: "blitt" },
-  { infinitiv: "spise", presens: "spiser", preteritum: "spiste", perfektum: "spist" },
-  { infinitiv: "drikke", presens: "drikker", preteritum: "drakk", perfektum: "drukket" },
-  { infinitiv: "lese", presens: "leser", preteritum: "leste", perfektum: "lest" },
-  { infinitiv: "skrive", presens: "skriver", preteritum: "skrev", perfektum: "skrevet" },
-  { infinitiv: "bo", presens: "bor", preteritum: "bodde", perfektum: "bodd" },
-  { infinitiv: "snakke", presens: "snakker", preteritum: "snakket", perfektum: "snakket" },
-  { infinitiv: "jobbe", presens: "jobber", preteritum: "jobbet", perfektum: "jobbet" },
-  { infinitiv: "høre", presens: "hører", preteritum: "hørte", perfektum: "hørt" },
-  { infinitiv: "kjøpe", presens: "kjøper", preteritum: "kjøpte", perfektum: "kjøpt" },
-  { infinitiv: "leve", presens: "lever", preteritum: "levde", perfektum: "levd" },
-  { infinitiv: "tenke", presens: "tenker", preteritum: "tenkte", perfektum: "tenkt" },
-  { infinitiv: "betale", presens: "betaler", preteritum: "betalte", perfektum: "betalt" },
-  { infinitiv: "velge", presens: "velger", preteritum: "valgte", perfektum: "valgt" },
-  { infinitiv: "kjenne", presens: "kjenner", preteritum: "kjente", perfektum: "kjent" },
-  { infinitiv: "sove", presens: "sover", preteritum: "sov", perfektum: "sovet" },
-];
+    
+    {
+        "infinitiv": "å være",
+        "presens": "er",
+        "preteritum": "var",
+        "presens perfektum": "har vært"
+    },
+    {
+        "infinitiv": "å ha",
+        "presens": "har",
+        "preteritum": "hadde",
+        "presens perfektum": "har hatt"
+    },
+    {
+        "infinitiv": "å gjøre",
+        "presens": "gjør",
+        "preteritum": "gjorde",
+        "presens perfektum": "har gjort"
+    },
+    {
+        "infinitiv": "å si",
+        "presens": "sier",
+        "preteritum": "sa",
+        "presens perfektum": "har sagt"
+    },
+    {
+        "infinitiv": "å gå",
+        "presens": "går",
+        "preteritum": "gikk",
+        "presens perfektum": "har gått"
+    },
+    {
+        "infinitiv": "å komme",
+        "presens": "kommer",
+        "preteritum": "kom",
+        "presens perfektum": "har kommet"
+    },
+    {
+        "infinitiv": "å se",
+        "presens": "ser",
+        "preteritum": "så",
+        "presens perfektum": "har sett"
+    },
+    {
+        "infinitiv": "å bli",
+        "presens": "blir",
+        "preteritum": "ble",
+        "presens perfektum": "har blitt"
+    },
+    {
+        "infinitiv": "å få",
+        "presens": "får",
+        "preteritum": "fikk",
+        "presens perfektum": "har fått"
+    },
+    {
+        "infinitiv": "å ta",
+        "presens": "tar",
+        "preteritum": "tok",
+        "presens perfektum": "har tatt"
+    },
+    {
+        "infinitiv": "å kunne",
+        "presens": "kan",
+        "preteritum": "kunne",
+        "presens perfektum": "har kunnet"
+    },
+    {
+        "infinitiv": "å ville",
+        "presens": "vil",
+        "preteritum": "ville",
+        "presens perfektum": "har villet"
+    },
+    {
+        "infinitiv": "å skulle",
+        "presens": "skal",
+        "preteritum": "skulle",
+        "presens perfektum": "har skullet"
+    },
+    {
+        "infinitiv": "å måtte",
+        "presens": "må",
+        "preteritum": "måtte",
+        "presens perfektum": "har måttet"
+    },
+    {
+        "infinitiv": "å vite",
+        "presens": "vet",
+        "preteritum": "visste",
+        "presens perfektum": "har visst"
+    },
+    {
+        "infinitiv": "å tro",
+        "presens": "tror",
+        "preteritum": "trodde",
+        "presens perfektum": "har trodd"
+    },
+    {
+        "infinitiv": "å tenke",
+        "presens": "tenker",
+        "preteritum": "tenkte",
+        "presens perfektum": "har tenkt"
+    },
+    {
+        "infinitiv": "å like",
+        "presens": "liker",
+        "preteritum": "likte",
+        "presens perfektum": "har likt"
+    },
+    {
+        "infinitiv": "å elske",
+        "presens": "elsker",
+        "preteritum": "elsket",
+        "presens perfektum": "har elsket"
+    },
+    {
+        "infinitiv": "å høre",
+        "presens": "hører",
+        "preteritum": "hørte",
+        "presens perfektum": "har hørt"
+    },
+    {
+        "infinitiv": "å finne",
+        "presens": "finner",
+        "preteritum": "fant",
+        "presens perfektum": "har funnet"
+    },
+    {
+        "infinitiv": "å spørre",
+        "presens": "spør",
+        "preteritum": "spurte",
+        "presens perfektum": "har spurt"
+    },
+    {
+        "infinitiv": "å kjenne",
+        "presens": "kjenner",
+        "preteritum": "kjente",
+        "presens perfektum": "har kjent"
+    },
+    {
+        "infinitiv": "å sove",
+        "presens": "sover",
+        "preteritum": "sov",
+        "presens perfektum": "har sovet"
+    },
+    {
+        "infinitiv": "å leve",
+        "presens": "lever",
+        "preteritum": "levde",
+        "presens perfektum": "har levd"
+    },
+    {
+        "infinitiv": "å dø",
+        "presens": "dør",
+        "preteritum": "døde",
+        "presens perfektum": "har dødd"
+    },
+    {
+        "infinitiv": "å løpe",
+        "presens": "løper",
+        "preteritum": "løp",
+        "presens perfektum": "har løpt"
+    },
+    {
+        "infinitiv": "å skrive",
+        "presens": "skriver",
+        "preteritum": "skrev",
+        "presens perfektum": "har skrevet"
+    },
+    {
+        "infinitiv": "å lese",
+        "presens": "leser",
+        "preteritum": "leste",
+        "presens perfektum": "har lest"
+    },
+    {
+        "infinitiv": "å lage",
+        "presens": "lager",
+        "preteritum": "laget",
+        "presens perfektum": "har laget"
+    },
+    {
+        "infinitiv": "å spise",
+        "presens": "spiser",
+        "preteritum": "spiste",
+        "presens perfektum": "har spist"
+    },
+    {
+        "infinitiv": "å drikke",
+        "presens": "drikker",
+        "preteritum": "drakk",
+        "presens perfektum": "har drukket"
+    },
+    {
+        "infinitiv": "å kjøpe",
+        "presens": "kjøper",
+        "preteritum": "kjøpte",
+        "presens perfektum": "har kjøpt"
+    },
+    {
+        "infinitiv": "å selge",
+        "presens": "selger",
+        "preteritum": "solgte",
+        "presens perfektum": "har solgt"
+    },
+    {
+        "infinitiv": "å stå",
+        "presens": "står",
+        "preteritum": "sto",
+        "presens perfektum": "har stått"
+    },
+    {
+        "infinitiv": "å sitte",
+        "presens": "sitter",
+        "preteritum": "satt",
+        "presens perfektum": "har sittet"
+    },
+    {
+        "infinitiv": "å ligge",
+        "presens": "ligger",
+        "preteritum": "lå",
+        "presens perfektum": "har ligget"
+    },
+    {
+        "infinitiv": "å gi",
+        "presens": "gir",
+        "preteritum": "ga",
+        "presens perfektum": "har gitt"
+    },
+    {
+        "infinitiv": "å ta imot",
+        "presens": "tar imot",
+        "preteritum": "tok imot",
+        "presens perfektum": "har tatt imot"
+    },
+    {
+        "infinitiv": "å kjøre",
+        "presens": "kjører",
+        "preteritum": "kjørte",
+        "presens perfektum": "har kjørt"
+    },
+    {
+        "infinitiv": "å åpne",
+        "presens": "åpner",
+        "preteritum": "åpnet",
+        "presens perfektum": "har åpnet"
+    },
+    {
+        "infinitiv": "å lukke",
+        "presens": "lukker",
+        "preteritum": "lukket",
+        "presens perfektum": "har lukket"
+    },
+    {
+        "infinitiv": "å hente",
+        "presens": "henter",
+        "preteritum": "hentet",
+        "presens perfektum": "har hentet"
+    },
+    {
+        "infinitiv": "å ringe",
+        "presens": "ringer",
+        "preteritum": "ringte",
+        "presens perfektum": "har ringt"
+    },
+    {
+        "infinitiv": "å betale",
+        "presens": "betaler",
+        "preteritum": "betalte",
+        "presens perfektum": "har betalt"
+    },
+    
+        {
+            "infinitiv": "å forstå",
+            "presens": "forstår",
+            "preteritum": "forsto",
+            "presens perfektum": "har forstått"
+        },
+        {
+            "infinitiv": "å glemme",
+            "presens": "glemmer",
+            "preteritum": "glemte",
+            "presens perfektum": "har glemt"
+        },
+        {
+            "infinitiv": "å hjelpe",
+            "presens": "hjelper",
+            "preteritum": "hjalp",
+            "presens perfektum": "har hjulpet"
+        },
+        {
+            "infinitiv": "å fortelle",
+            "presens": "forteller",
+            "preteritum": "fortalte",
+            "presens perfektum": "har fortalt"
+        },
+        {
+            "infinitiv": "å vente",
+            "presens": "venter",
+            "preteritum": "ventet",
+            "presens perfektum": "har ventet"
+        },
+        {
+            "infinitiv": "å reise",
+            "presens": "reiser",
+            "preteritum": "reiste",
+            "presens perfektum": "har reist"
+        },
+        {
+            "infinitiv": "å prøve",
+            "presens": "prøver",
+            "preteritum": "prøvde",
+            "presens perfektum": "har prøvd"
+        },
+        {
+            "infinitiv": "å møte",
+            "presens": "møter",
+            "preteritum": "møtte",
+            "presens perfektum": "har møtt"
+        },
+        {
+            "infinitiv": "å arbeide",
+            "presens": "arbeider",
+            "preteritum": "arbeidet",
+            "presens perfektum": "har arbeidet"
+        },
+        {
+            "infinitiv": "å låne",
+            "presens": "låner",
+            "preteritum": "lånte",
+            "presens perfektum": "har lånt"
+        },
+        {
+            "infinitiv": "å selge",
+            "presens": "selger",
+            "preteritum": "solgte",
+            "presens perfektum": "har solgt"
+        },
+        {
+            "infinitiv": "å spille",
+            "presens": "spiller",
+            "preteritum": "spilte",
+            "presens perfektum": "har spilt"
+        },
+        {
+            "infinitiv": "å vite",
+            "presens": "vet",
+            "preteritum": "visste",
+            "presens perfektum": "har visst"
+        },
+        {
+            "infinitiv": "å bære",
+            "presens": "bærer",
+            "preteritum": "bar",
+            "presens perfektum": "har båret"
+        },
+        {
+            "infinitiv": "å kjøpe",
+            "presens": "kjøper",
+            "preteritum": "kjøpte",
+            "presens perfektum": "har kjøpt"
+        },
+        {
+            "infinitiv": "å bygge",
+            "presens": "bygger",
+            "preteritum": "bygget",
+            "presens perfektum": "har bygget"
+        },
+        {
+            "infinitiv": "å danse",
+            "presens": "danser",
+            "preteritum": "danset",
+            "presens perfektum": "har danset"
+        },
+        {
+            "infinitiv": "å tegne",
+            "presens": "tegner",
+            "preteritum": "tegnet",
+            "presens perfektum": "har tegnet"
+        },
+        {
+            "infinitiv": "å hoppe",
+            "presens": "hopper",
+            "preteritum": "hoppet",
+            "presens perfektum": "har hoppet"
+        },
+        {
+            "infinitiv": "å flytte",
+            "presens": "flytter",
+            "preteritum": "flyttet",
+            "presens perfektum": "har flyttet"
+        },
+        {
+            "infinitiv": "å studere",
+            "presens": "studerer",
+            "preteritum": "studerte",
+            "presens perfektum": "har studert"
+        },
+        {
+            "infinitiv": "å våkne",
+            "presens": "våkner",
+            "preteritum": "våknet",
+            "presens perfektum": "har våknet"
+        },
+        {
+            "infinitiv": "å bestille",
+            "presens": "bestiller",
+            "preteritum": "bestilte",
+            "presens perfektum": "har bestilt"
+        },
+        {
+            "infinitiv": "å planlegge",
+            "presens": "planlegger",
+            "preteritum": "planla",
+            "presens perfektum": "har planlagt"
+        },
+        {
+            "infinitiv": "å gråte",
+            "presens": "gråter",
+            "preteritum": "gråt",
+            "presens perfektum": "har grått"
+        },
+        {
+            "infinitiv": "å smile",
+            "presens": "smiler",
+            "preteritum": "smilte",
+            "presens perfektum": "har smilt"
+        },
+        {
+            "infinitiv": "å le",
+            "presens": "ler",
+            "preteritum": "lo",
+            "presens perfektum": "har ledd"
+        },
+        {
+            "infinitiv": "å klippe",
+            "presens": "klipper",
+            "preteritum": "klippet",
+            "presens perfektum": "har klippet"
+        },
+        {
+            "infinitiv": "å skynde",
+            "presens": "skynder",
+            "preteritum": "skyndte",
+            "presens perfektum": "har skyndt"
+        },
+        {
+            "infinitiv": "å bruke",
+            "presens": "bruker",
+            "preteritum": "brukte",
+            "presens perfektum": "har brukt"
+        },
+        {
+            "infinitiv": "å låse",
+            "presens": "låser",
+            "preteritum": "låste",
+            "presens perfektum": "har låst"
+        },
+        {
+            "infinitiv": "å huske",
+            "presens": "husker",
+            "preteritum": "husket",
+            "presens perfektum": "har husket"
+        },
+        {
+            "infinitiv": "å besøke",
+            "presens": "besøker",
+            "preteritum": "besøkte",
+            "presens perfektum": "har besøkt"
+        }
 
-// Функция для случайного выбора элемента из массива
+    ];
+
+
+
 function getRandomElement(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// Функция для запуска викторины
 function startQuiz() {
   let score = 0;
-  const rounds = 10; // Количество раундов
+  const rounds = 10; 
   let currentRound = 0;
 
+  const startButton = document.getElementById("startQuiz");
   const quizContainer = document.getElementById("quizContainer");
   const questionElement = document.getElementById("question");
   const answerInput = document.getElementById("answer");
+  const submitButton = document.getElementById("submitAnswer");
   const feedbackElement = document.getElementById("feedback");
   const scoreElement = document.getElementById("score");
+  const hintButton = document.getElementById("showHint");
+  const hintContainer = document.getElementById("hintContainer");
+  const closeHintButton = document.getElementById("closeHint");
 
+  startButton.style.display = "none"; 
   quizContainer.style.display = "block";
 
   function askQuestion() {
     const verb = getRandomElement(verbs);
-    const forms = ["infinitiv", "presens", "preteritum", "perfektum"];
+    const forms = ["infinitiv", "presens", "preteritum", "presens perfektum"];
     const randomForm = getRandomElement(forms);
     const correctAnswer = verb[randomForm];
 
-    questionElement.textContent = `Назови форму '${randomForm}' для глагола '${verb.infinitiv}':`;
+    questionElement.textContent = `Hva er formen '${randomForm}' for verbet '${verb.infinitiv}':`;
     answerInput.value = "";
     answerInput.focus();
+    submitButton.disabled = true;
 
-    document.getElementById("submitAnswer").onclick = function() {
+    submitButton.onclick = function() {
       const userAnswer = answerInput.value;
       if (userAnswer && userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-        feedbackElement.textContent = "Правильно!";
+        feedbackElement.textContent = "Riktig!";
+        feedbackElement.style.color = "green";
+        feedbackElement.style.animation = "none";
         score++;
       } else {
-        feedbackElement.textContent = `Неправильно. Правильный ответ: ${correctAnswer}.`;
+        feedbackElement.textContent = `Feil. Riktig svar: ${correctAnswer}.`;
+        feedbackElement.style.color = "red";
+        feedbackElement.style.animation = "blink 1s step-end infinite";
       }
       currentRound++;
       if (currentRound < rounds) {
         askQuestion();
       } else {
         quizContainer.style.display = "none";
-        scoreElement.textContent = `Игра окончена! Твой счет: ${score}/${rounds}.`;
+        scoreElement.textContent = `Spillet er over! Din poengsum: ${score}/${rounds}.`;
+        startButton.style.display = "block"; 
+        startButton.style.marginTop = "20px"; 
       }
+    };
+
+    hintButton.onclick = function() {
+      hintContainer.style.display = "block";
+      hintContainer.innerHTML = `
+        <table>
+          <tr><th>Form</th><th>Verb</th></tr>
+          <tr><td>Infinitiv</td><td>${verb.infinitiv}</td></tr>
+          <tr><td>Presens</td><td>${verb.presens}</td></tr>
+          <tr><td>Preteritum</td><td>${verb.preteritum}</td></tr>
+          <tr><td>Presens perfektum</td><td>${verb["presens perfektum"]}</td></tr>
+        </table>
+        <button id="closeHint">Lukk</button>
+      `;
+      document.getElementById("closeHint").onclick = function() {
+        hintContainer.style.display = "none";
+      };
     };
   }
 
@@ -83,4 +553,144 @@ function startQuiz() {
 }
 
 document.getElementById("startQuiz").onclick = startQuiz;
+document.getElementById("answer").addEventListener("input", function() {
+  document.getElementById("submitAnswer").disabled = !this.value.trim();
+});
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function getRandomElement(arr) {
+//   return arr[Math.floor(Math.random() * arr.length)];
+// }
+
+// function startQuiz() {
+//   let score = 0;
+//   const rounds = 10; 
+//   let currentRound = 0;
+
+//   const startButton = document.getElementById("startQuiz");
+//   const quizContainer = document.getElementById("quizContainer");
+//   const questionElement = document.getElementById("question");
+//   const answerInput = document.getElementById("answer");
+//   const feedbackElement = document.getElementById("feedback");
+//   const scoreElement = document.getElementById("score");
+
+//   startButton.style.display = "none"; 
+//   quizContainer.style.display = "block";
+
+//   function askQuestion() {
+//     const verb = getRandomElement(verbs);
+//     const forms = ["infinitiv", "presens", "preteritum", "presens perfektum"];
+//     const randomForm = getRandomElement(forms);
+//     const correctAnswer = verb[randomForm];
+
+//     questionElement.textContent = `Hva er formen '${randomForm}' for verbet '${verb.infinitiv}':`;
+//     answerInput.value = "";
+//     answerInput.focus();
+
+//     document.getElementById("submitAnswer").onclick = function() {
+//       const userAnswer = answerInput.value;
+//       if (userAnswer && userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+//         feedbackElement.textContent = "Riktig!";
+//         feedbackElement.style.color = "green";
+//         feedbackElement.style.animation = "none";
+//         score++;
+//       } else {
+//         feedbackElement.textContent = `Feil. Riktig svar: ${correctAnswer}.`;
+//         feedbackElement.style.color = "red";
+//         feedbackElement.style.animation = "blink 1s step-end infinite";
+//       }
+//       currentRound++;
+//       if (currentRound < rounds) {
+//         askQuestion();
+//       } else {
+//         quizContainer.style.display = "none";
+//         scoreElement.textContent = `Spillet er over! Din poengsum: ${score}/${rounds}.`;
+//         startButton.style.display = "block"; 
+//         startButton.style.marginTop = "20px"; 
+//       }
+//     };
+//   }
+
+//   askQuestion();
+// }
+
+// document.getElementById("startQuiz").onclick = startQuiz;
+
+
+
+
+// function getRandomElement(arr) {
+//   return arr[Math.floor(Math.random() * arr.length)];
+// }
+
+
+// function startQuiz() {
+//   let score = 0;
+//   const rounds = 10; 
+//   let currentRound = 0;
+
+//   const startButton = document.getElementById("startQuiz");
+//   const quizContainer = document.getElementById("quizContainer");
+//   const questionElement = document.getElementById("question");
+//   const answerInput = document.getElementById("answer");
+//   const feedbackElement = document.getElementById("feedback");
+//   const scoreElement = document.getElementById("score");
+
+//   startButton.style.display = "none"; 
+//   quizContainer.style.display = "block";
+
+//   function askQuestion() {
+//     const verb = getRandomElement(verbs);
+//     const forms = ["infinitiv", "presens", "preteritum", "presens perfektum"];
+//     const randomForm = getRandomElement(forms);
+//     const correctAnswer = verb[randomForm];
+
+//     questionElement.textContent = `Назови форму '${randomForm}' для глагола '${verb.infinitiv}':`;
+//     answerInput.value = "";
+//     answerInput.focus();
+
+//     document.getElementById("submitAnswer").onclick = function() {
+//       const userAnswer = answerInput.value;
+//       if (userAnswer && userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+//         feedbackElement.textContent = "Правильно!";
+//         feedbackElement.style.color = "green";
+//         feedbackElement.style.animation = "none";
+//         score++;
+//       } else {
+//         feedbackElement.textContent = `Неправильно. Правильный ответ: ${correctAnswer}.`;
+//         feedbackElement.style.color = "red";
+//         feedbackElement.style.animation = "blink 1s step-end infinite";
+//       }
+//       currentRound++;
+//       if (currentRound < rounds) {
+//         askQuestion();
+//       } else {
+//         quizContainer.style.display = "none";
+//         scoreElement.textContent = `Игра окончена! Твой счет: ${score}/${rounds}.`;
+//         startButton.style.display = "block"; 
+//         startButton.style.marginTop = "20px"; 
+//       }
+//     };
+//   }
+
+//   askQuestion();
+// }
+
+// document.getElementById("startQuiz").onclick = startQuiz;

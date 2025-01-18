@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Language Selection</title>
+    <link rel="stylesheet" href="./src/language.css" />
+  </head>
+  <body>
+    <div class="container">
+      <button
+        class="glass-button glass-button-russian"
+        onclick="selectLanguage('russian')"
+      >
+        Jeg kan russisk
+      </button>
+      <button
+        class="glass-button glass-button-english"
+        onclick="selectLanguage('english')"
+      >
+        Jeg kan engelsk
+      </button>
+      <button
+        class="glass-button glass-button-arabic"
+        onclick="selectLanguage('arabic')"
+      >
+        Jeg kan arabisk
+      </button>
+      <button
+        class="glass-button glass-button-swahili"
+        onclick="selectLanguage('swahili')"
+      >
+        Jeg kan swahili
+      </button>
+    </div>
+    <script>
+      function selectLanguage(language) {
+        localStorage.setItem("selectedLanguage", language);
+        window.location.href = "buildSentence.html";
+      }
+    </script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Language Selection</title>
+    <link rel="stylesheet" href="language.css" />
+  </head>
+  <body>
+    <div class="container">
+      <button class="glass-button glass-button-russian">Jeg kan russisk</button>
+      <button class="glass-button glass-button-english">Jeg kan engelsk</button>
+      <button class="glass-button glass-button-arabic">Jeg kan arabisk</button>
+    </div>
+  </body>
+</html> -->

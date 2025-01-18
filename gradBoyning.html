@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Norske Adjektiv</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <h2 style="text-decoration-line: underline">
+      Trener for norske grad bøyning
+    </h2>
+    <div id="startContainer">
+      <button class="glass-button" id="startQuiz">Start quiz</button>
+    </div>
+    <div id="quizContainer" style="display: none">
+      <p id="question"></p>
+      <div class="input-container">
+        <input type="text" id="answer" />
+        <button class="glass-button-help" id="showHint">Hjelp</button>
+        <button class="glass-button" id="submitAnswer">Svar</button>
+      </div>
+      <div id="hintContainer">
+        <table>
+          <tr>
+            <th>Form</th>
+            <th>Adjektiv</th>
+          </tr>
+          <tr>
+            <td>Positiv</td>
+            <td id="positiv"></td>
+          </tr>
+          <tr>
+            <td>Komparativ</td>
+            <td id="komparativ"></td>
+          </tr>
+          <tr>
+            <td>Superlativ</td>
+            <td id="superlativ"></td>
+          </tr>
+        </table>
+        <button id="closeHint">Lukk</button>
+      </div>
+      <p id="feedback"></p>
+    </div>
+    <p id="score"></p>
+    <button class="glass-button" onclick="location.href='index.html'">
+      Tilbake til hovedsiden
+    </button>
+    <script src="./src/gradBoyning.js"></script>
+  </body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Norske Adjektiv</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h2 style="text-decoration-line: underline">
+      Trener for norske grad bøyning
+    </h2>
+    <div id="startContainer">
+      <button class="glass-button" id="startQuiz">Start quiz</button>
+    </div>
+    <div id="quizContainer" style="display: none">
+      <p id="question"></p>
+      <div class="input-container">
+        <input type="text" id="answer" />
+        <button class="glass-button" id="submitAnswer">Svar</button>
+      </div>
+      <p id="feedback"></p>
+    </div>
+    <p id="score"></p>
+    <button class="glass-button" onclick="location.href='index.html'">
+      Tilbake til hovedsiden
+    </button>
+    <script src="./src/gradBoyning.js"></script>
+  </body>
+</html> -->

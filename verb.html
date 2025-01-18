@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Norske verb</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <h2 style="text-decoration-line: underline">Trener for norske verb</h2>
+    <button class="glass-button" id="startQuiz">Start quiz</button>
+    <div id="quizContainer" style="display: none">
+      <p id="question"></p>
+      <div class="input-container">
+        <input type="text" id="answer" />
+        <button class="glass-button-help" id="showHint">Hjelp</button>
+        <button class="glass-button" id="submitAnswer" disabled>Svar</button>
+        
+      </div>
+      <div id="hintContainer">
+        <table>
+          <tr>
+            <th>Form</th>
+            <th>Verb</th>
+          </tr>
+          <tr>
+            <td>Infinitiv</td>
+            <td id="infinitiv"></td>
+          </tr>
+          <tr>
+            <td>Presens</td>
+            <td id="presens"></td>
+          </tr>
+          <tr>
+            <td>Preteritum</td>
+            <td id="preteritum"></td>
+          </tr>
+          <tr>
+            <td>Presens perfektum</td>
+            <td id="presensPerfektum"></td>
+          </tr>
+        </table>
+        <button  id="closeHint">Lukk</button>
+      </div>
+      <p id="feedback"></p>
+    </div>
+    <p id="score"></p>
+    <button class="glass-button" onclick="location.href='index.html'">
+      Tilbaketil hovedsiden
+          </button>
+          <script src="./src/quiz.js"></script>
+        </body>
+      </html>
+    </button>
+  </body>
+</html>
+
+      <!-- <!DOCTYPE html>
+      <html lang="no">
+        <head>
+          <meta charset="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <title>Norske verb</title>
+          <link rel="stylesheet" href="styles.css" />
+        </head>
+        <body>
+          <h2 style="text-decoration-line: underline">
+            Trener for norske verb
+          </h2>
+          <button class="glass-button" id="startQuiz">Start quiz</button>
+          <div id="quizContainer" style="display: none">
+            <p id="question"></p>
+            <div class="input-container">
+              <input type="text" id="answer" />
+              <button class="glass-button" id="showHint">Hjelp</button>
+              <button class="glass-button" id="submitAnswer" disabled>
+                Svar
+              </button>
+            </div>
+            <div
+              id="hintContainer"
+              style="
+                display: none;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%, 0);
+                width: 33%;
+                background: rgba(255, 255, 255, 0.9);
+                border: 1px solid #ccc;
+                padding: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              "
+            ></div>
+            <p id="feedback"></p>
+          </div>
+          <p id="score"></p>
+          <button class="glass-button" onclick="location.href='index.html'">
+            Tilbake til hovedsiden
+          </button>
+          <script src="./src/quiz.js"></script>
+        </body>
+      </html>
+    </button>
+  </body>
+</html> -->

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VINSTRA SKOLE APP</title>
+    <link rel="stylesheet" href="./src/stylesBuildSentence.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="russianSentenceContainer">
+        <p id="russianSentence"></p>
+        <p id="englishSentence"></p>
+      </div>
+      <div class="score-container">
+        <div class="sco">
+          <button
+            class="glass-button-back"
+            id="mainMenuButton"
+            onclick="location.href='./index.html'"
+          >
+            &#x1F3E0;
+          </button>
+        </div>
+        <button class="glass-button-mic" id="startVoiceInput">&#x1F3A4;</button>
+      </div>
+      <div class="separator"></div>
+      <div id="sentenceContainer">
+        <p id="sentence"></p>
+        <button class="glass-button-help" id="removeLastWord">&#x2190;</button>
+      </div>
+      <div class="separator"></div>
+      <div id="wordsContainer"></div>
+      <div class="separator"></div>
+      <div class="score-container">
+        <div class="score correct" id="correctCount">0</div>
+        <button class="glass-button" id="checkAnswer">Sjekk svar</button>
+        <div class="score incorrect" id="incorrectCount">0</div>
+      </div>
+      <div class="separator"></div>
+      <p id="feedback"></p>
+      <p id="correctAnswer"></p>
+      <p id="userAnswer"></p>
+    </div>
+    <script type="module" src="./src/buildSentenceSimple.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VINSTRA SKOLE APP</title>
+    <link rel="stylesheet" href="stylesBuildSentence.css" />
+  </head>
+  <body>
+    <div class="container">
+   
+      <div id="russianSentenceContainer">
+        <p id="russianSentence"></p>
+        <p id="englishSentence"></p>
+        <button class="glass-button-mic" id="startVoiceInput">&#x1F3A4;</button>
+      </div>
+      <div class="separator"></div>
+      <div id="sentenceContainer">
+        <p id="sentence"></p>
+        <button class="glass-button-help" id="removeLastWord">&#x2190;</button>
+      </div>
+      <div class="separator"></div>
+      <div id="wordsContainer"></div>
+      <div class="separator"></div>
+      <div class="score-container">
+        <div class="score correct" id="correctCount">0</div>
+        <button class="glass-button" id="checkAnswer">Sjekk svar</button>
+        <div class="score incorrect" id="incorrectCount">0</div>
+      </div>
+      <div class="separator"></div>
+      <p id="feedback"></p>
+      <p id="correctAnswer"></p>
+      <p id="userAnswer"></p>
+    </div>
+    <script src="./src/buildSentenceSimple.js"></script>
+  </body>
+</html>  -->
