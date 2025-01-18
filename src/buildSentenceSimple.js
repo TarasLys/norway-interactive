@@ -754,7 +754,11 @@ function formatSentence(sentence) {
 
   // Преобразуем время в текстовый формат
   sentence = sentence.replace(/(\d{1,2})[:.](\d{2})/, (match, p1, p2) => {
-    return `${numberMap[p1]} og ${numberMap[p2]}`;
+    if (p2 === "00") {
+      return `klokka ${numberMap[p1]}`;
+    } else {
+      return `${numberMap[p1]} ${numberMap[p2]}`;
+    }
   });
 
   return sentence;
@@ -818,7 +822,11 @@ function startVoiceInput() {
       // Преобразуем время в текстовый формат
       words = words.map(word => {
         return word.replace(/(\d{1,2})[:.](\d{2})/, (match, p1, p2) => {
-          return `${numberMap[p1]} og ${numberMap[p2]}`;
+          if (p2 === "00") {
+            return `klokka ${numberMap[p1]}`;
+          } else {
+            return `${numberMap[p1]} ${numberMap[p2]}`;
+          }
         });
       });
 
@@ -858,16 +866,9 @@ window.onload = function() {
 
 
 
-
-
-
-
-
-// const extraWords = [ "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så", 
-//   "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over", 
-//   "under", "eller", "eller", "nå", "her", "der", "hvor", "når", "da", "skal", "kan", "vil", "må", "gå", "spise", "drikke", 
-//   "se", "høre", "være", "gjøre", "ta", "ha", "få", "sove", "stå", "sitte", "ligge", "leke", "arbeide", "spille", "kjenne"];
-
+// const extraWords = [
+//   "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så", "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over", "under", "eller", "nå", "her", "der", "hvor", "når", "da", "skal", "kan", "vil", "må", "gå", "spise", "drikke", "se", "høre", "være", "gjøre", "ta", "ha", "få", "sove", "stå", "sitte", "ligge", "leke", "arbeide", "spille", "kjenne"
+// ];
 
 // let currentSentence = {};
 // let selectedWords = [];
@@ -876,20 +877,35 @@ window.onload = function() {
 // let recognition;
 // let selectedLanguage = localStorage.getItem('selectedLanguage') || 'norwegian';
 
-
+// const numberMap = { 
+//   "1": "en", "2": "to", "3": "tre", "4": "fire", "5": "fem", "6": "seks", 
+//   "7": "sju", "8": "åtte", "9": "ni", "10": "ti", "11": "elleve", "12": "tolv",
+//   "13": "tretten", "14": "fjorten", "15": "femten", "16": "seksten", 
+//   "17": "sytten", "18": "atten", "19": "nitten", "20": "tjue", "21": "tjueen", 
+//   "22": "tjueto", "23": "tjuetre", "24": "tjuefire", "25": "tjuefem", 
+//   "26": "tjueseks", "27": "tjuesju", "28": "tjueåtte", "29": "tjueni", 
+//   "30": "tretti", "31": "trettien", "32": "trettito", "33": "trettitre", 
+//   "34": "trettifire", "35": "trettifem", "36": "trettiseks", "37": "trettisju", 
+//   "38": "trettiåtte", "39": "trettini", "40": "førti", "41": "førtien", 
+//   "42": "førtito", "43": "førtitre", "44": "førtifire", "45": "førtifem", 
+//   "46": "førtiseks", "47": "førtisju", "48": "førtiåtte", "49": "førtini", 
+//   "50": "femti", "51": "femtien", "52": "femtito", "53": "femtitre", 
+//   "54": "femtifire", "55": "femtifem", "56": "femtiseks", "57": "femtisju", 
+//   "58": "femtiåtte", "59": "femtini", "60": "seksti"
+// };
 
 // function getRandomSentence() {
-//   const weights = sentences.map((_, index) => (index === sentences.length - 1 ? 5 : 1)); // Увеличиваем вес последнего предложения
+//   const weights = sentences.map((_, index) => (index === sentences.length - 1 ? 5 : 1));
 //   const totalWeight = weights.reduce((acc, weight) => acc + weight, 0);
 //   const random = Math.random() * totalWeight;
 //   let cumulativeWeight = 0;
-
 //   for (let i = 0; i < sentences.length; i++) {
 //     cumulativeWeight += weights[i];
 //     if (random < cumulativeWeight) {
 //       return sentences[i];
 //     }
 //   }
+//   return sentences[sentences.length - 1];
 // }
 
 // function shuffleArray(array) {
@@ -961,6 +977,14 @@ window.onload = function() {
 //     sentence += '.';
 //   }
 
+//   // Преобразуем цифры в текстовый формат
+//   sentence = sentence.replace(/\b\d+\b/g, match => numberMap[match]);
+
+//   // Преобразуем время в текстовый формат
+//   sentence = sentence.replace(/(\d{1,2})[:.](\d{2})/, (match, p1, p2) => {
+//     return `${numberMap[p1]} og ${numberMap[p2]}`;
+//   });
+
 //   return sentence;
 // }
 
@@ -1005,7 +1029,27 @@ window.onload = function() {
 
 //     recognition.onresult = function(event) {
 //       const transcript = event.results[0][0].transcript;
-//       const words = transcript.split(/\s+/);
+//       let words = transcript.split(/\s+/);
+
+//       words = words.map(word => {
+//         // Убираем двойные точки
+//         if (word.endsWith("..")) {
+//           word = word.slice(0, -1);
+//         }
+//         // Добавляем запятые автоматически
+//         return word.replace(/(,)/g, "$1 ");
+//       });
+
+//       // Преобразуем цифры в текстовый формат
+//       words = words.map(word => word.replace(/\b\d+\b/g, match => numberMap[match]));
+
+//       // Преобразуем время в текстовый формат
+//       words = words.map(word => {
+//         return word.replace(/(\d{1,2})[:.](\d{2})/, (match, p1, p2) => {
+//           return `${numberMap[p1]} og ${numberMap[p2]}`;
+//         });
+//       });
+
 //       selectedWords = words;
 //       const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
 //       const formattedSentence = formatSentence(selectedSentence);
@@ -1019,7 +1063,6 @@ window.onload = function() {
 //       console.error("Ошибка распознавания речи: ", event.error);
 //     };
 //   }
-
 //   recognition.start();
 // }
 
@@ -1039,6 +1082,16 @@ window.onload = function() {
 //   micButton.ontouchstart = startVoiceInput;
 //   micButton.ontouchend = stopVoiceInput;
 // };
+
+
+
+
+
+
+
+
+
+
 
 
 
