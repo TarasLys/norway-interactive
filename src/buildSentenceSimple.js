@@ -638,6 +638,8 @@ const sentences = [
 
 ];
 
+
+
 const extraWords = [
   "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så", "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over", "under", "eller", "nå", "her", "der", "hvor", "når", "da", "skal", "kan", "vil", "må", "gå", "spise", "drikke", "se", "høre", "være", "gjøre", "ta", "ha", "få", "sove", "stå", "sitte", "ligge", "leke", "arbeide", "spille", "kjenne"
 ];
@@ -752,15 +754,6 @@ function formatSentence(sentence) {
   // Преобразуем цифры в текстовый формат
   sentence = sentence.replace(/\b\d+\b/g, match => numberMap[match]);
 
-  // Преобразуем время в текстовый формат
-  sentence = sentence.replace(/(\d{1,2})[:.](\d{2})/, (match, p1, p2) => {
-    if (p2 === "00") {
-      return `klokka ${numberMap[p1]}`;
-    } else {
-      return `${numberMap[p1]} ${numberMap[p2]}`;
-    }
-  });
-
   return sentence;
 }
 
@@ -819,17 +812,6 @@ function startVoiceInput() {
       // Преобразуем цифры в текстовый формат
       words = words.map(word => word.replace(/\b\d+\b/g, match => numberMap[match]));
 
-      // Преобразуем время в текстовый формат
-      words = words.map(word => {
-        return word.replace(/(\d{1,2})[:.](\d{2})/, (match, p1, p2) => {
-          if (p2 === "00") {
-            return `klokka ${numberMap[p1]}`;
-          } else {
-            return `${numberMap[p1]} ${numberMap[p2]}`;
-          }
-        });
-      });
-
       selectedWords = words;
       const selectedSentence = selectedWords.join(" ").replace(/\s*([,\.!?])\s*/g, "$1 ");
       const formattedSentence = formatSentence(selectedSentence);
@@ -862,6 +844,7 @@ window.onload = function() {
   micButton.ontouchstart = startVoiceInput;
   micButton.ontouchend = stopVoiceInput;
 };
+
 
 
 
