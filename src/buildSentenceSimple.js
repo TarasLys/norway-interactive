@@ -638,6 +638,8 @@ const sentences = [
 
 ];
 
+
+
 const extraWords = [
   "og", "men", "eller", "fordi", "hvis", "når", "hvorfor", "hvordan", "hva", "hvem", "derfor", "som", "at", "om", "så",
   "jeg", "du", "han", "hun", "vi", "de", "en", "et", "den", "det", "på", "i", "til", "med", "av", "fra", "for", "over",
@@ -723,6 +725,7 @@ function selectWord(word, wordElement) {
   document.getElementById("feedback").textContent = "";
   document.getElementById("correctAnswer").textContent = "";
   document.getElementById("userAnswer").textContent = "";
+  isVoiceInput = false; // Смена режима на ручной ввод при выборе слова
   speak(word); // Озвучиваем выбранное слово
 }
 
@@ -738,14 +741,6 @@ function removeLastWord() {
       wordElement.classList.add("word");
       wordElement.onclick = () => selectWord(lastWord, wordElement);
       document.getElementById("wordsContainer").appendChild(wordElement);
-    }
-  }
-
-  // Проверка на количество слов и удаление лишних при голосовом вводе
-  const wordsContainer = document.getElementById("wordsContainer");
-  if (isVoiceInput && wordsContainer.children.length > 16) {
-    while (wordsContainer.children.length > 16) {
-      wordsContainer.removeChild(wordsContainer.lastChild);
     }
   }
 }
